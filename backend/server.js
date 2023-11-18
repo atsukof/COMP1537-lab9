@@ -5,6 +5,7 @@ const app = express();
 const cors = require('cors');
 app.use(cors()); // am enableing teh CORS
 
+const fetch = require('node-fetch')
 
 app.listen(3000, ()=> {
     console.log('server is running on port 3000.')
