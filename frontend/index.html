@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 11 Atsuko</title>
+
+</head>
+
+<body>
+  <label for="x">Enter a city name</label>
+  <input type="text" id="x">
+  <input type="submit" value="Get the Weather!" id="submitBtn">
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("submitBtn").addEventListener("click", async () => {
+      const x = document.getElementById("x").value
+      resp = await fetch(`http://localhost:3000/getCityWeather?cname=${x}`)
+      respJson = await resp.json()
+
+      document.getElementById("result").innerHTML = `<div>${respJson.main.temp}</div>`
+      document.getElementById("result").innerHTML += `<div>${respJson.weather[0].description}</div>`
+      document.getElementById("result").innerHTML += `<img src="https://openweathermap.org/img/wn/${respJson.weather[0].icon}@2x.png"> `
+    })
+  </script>
+</body>
+
+</html>
